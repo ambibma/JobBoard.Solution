@@ -4,6 +4,7 @@ namespace Jobs.Models
   {
     public string Title {get; set;}
     public string Description {get; set;}
+    public string Wage {get;set;}
     public Contact Information {get; set;}
 
     public Opening (string title, string description, Contact inputContact){
