@@ -10,8 +10,13 @@
       crossorigin="anonymous">
   </head>
   <body>
-    <h1>Post a Jerb!</h1>
-    <a href = "/jobs/"> Get a Job!!!</a>
-    <a href = "/jobs/new"> Add a Job!!!</a>
+    <h1>Look at all deese Jobsss</h1>
+    <ul>
+    @using Jobs.Models
+      @foreach (Opening jobOpening in Model)
+      {
+        <li>@jobOpening.Title</li>
+      }
+    </ul>
   </body>
 </html>

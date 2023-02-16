@@ -23,8 +23,12 @@ namespace Jobs.Tests
   }
   [TestClass]
 
-  public class JobsTests
+  public class JobsTests : IDisposable
   {
+     public void Dispose()
+    {
+      Opening.ClearAll();
+    }
     Opening testOpening;
     Contact testContact;
     [TestInitialize]
@@ -32,12 +36,17 @@ namespace Jobs.Tests
     {
       
       testContact = new Contact("Smith", "MrSmith@smithmail.com","555-555-555");
-      testOpening = new Opening("Data Plumber", "You Plunge Data from servers", testContact);
+      testOpening = new Opening("Data Plumber", "You Plunge Data from servers","$420.00/hr", testContact);
     }
     [TestMethod]
     public void OpeningConstructor_CreatesNewOpening_Opening()
     {
     Assert.AreEqual(typeof(Opening), testOpening.GetType());
+    }
+    [TestMethod]
+    public void GetAll_GetsAllJobs_List()
+    {
+      Assert.AreEqual(1, Opening.GetAll().Count);
     }
   }
 }
